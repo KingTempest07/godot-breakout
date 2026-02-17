@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://pbc713fk1kxk"]
+[gd_scene load_steps=6 format=3 uid="uid://pbc713fk1kxk"]
 
 [ext_resource type="Script" uid="uid://bwrulw4tco2j" path="res://scripts/SceneBlocks.gd" id="1_mmuc5"]
 [ext_resource type="PackedScene" uid="uid://bbkg61lb0m4tq" path="res://scenes/player.tscn" id="1_oxewp"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgi6q"]
 size = Vector2(21.6, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmk5a"]
+size = Vector2(273.2, 2.4)
 
 [node name="Scene_Blocks" type="Node2D"]
 script = ExtResource("1_mmuc5")
@@ -32,6 +35,18 @@ physics_material_override = ExtResource("3_36qkm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left Wall"]
 shape = SubResource("RectangleShape2D_kgi6q")
+
+[node name="Ceiling" type="StaticBody2D" parent="Walls"]
+position = Vector2(-48, 300)
+scale = Vector2(5, 40)
+collision_layer = 16
+collision_mask = 4
+physics_material_override = ExtResource("3_36qkm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Ceiling"]
+position = Vector2(125.8, -8.8)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_vmk5a")
 
 [node name="Right Wall" type="StaticBody2D" parent="Walls"]
 position = Vector2(1212, 300)

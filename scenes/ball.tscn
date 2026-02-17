@@ -20,7 +20,9 @@ lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_50qgs")
-velocity_increase_on_bounce = 15.0
+initial_velocity = 200.0
+velocity_increase_on_bounce = 4.0
+max_velocity = 400.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_t866w")

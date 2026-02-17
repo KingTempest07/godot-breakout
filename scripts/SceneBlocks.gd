@@ -10,6 +10,7 @@ extends Node2D
 @export var margin: int = 20	
 @export var column_count = 8
 @export var row_count = 5
+@export var row_colors_from_top: Array[Color]
 
 
 var ball
@@ -37,6 +38,7 @@ func _ready() -> void:
 		for j in range(row_count):
 			var new_block = block_scene.instantiate()
 			new_block.global_position = Vector2(current_x, current_y)
+			new_block.modulate = row_colors_from_top[j]
 			parent_node.add_child(new_block)	
 			current_y += block_height + margin	
 			

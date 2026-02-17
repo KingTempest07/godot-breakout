@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://pbc713fk1kxk"]
 
-[ext_resource type="Script" path="res://scripts/SceneBlocks.gd" id="1_mmuc5"]
+[ext_resource type="Script" uid="uid://bwrulw4tco2j" path="res://scripts/SceneBlocks.gd" id="1_mmuc5"]
 [ext_resource type="PackedScene" uid="uid://bbkg61lb0m4tq" path="res://scenes/player.tscn" id="1_oxewp"]
 [ext_resource type="PhysicsMaterial" uid="uid://u6ie1omt700b" path="res://physics/bouncy_physics_material.tres" id="3_36qkm"]
 
@@ -42,5 +42,4 @@ physics_material_override = ExtResource("3_36qkm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right Wall"]
 position = Vector2(-0.800003, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_kgi6q")

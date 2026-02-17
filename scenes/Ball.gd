@@ -40,4 +40,9 @@ func _on_body_exited(body: Node) -> void:
 		linear_velocity = linear_velocity.normalized() * current_velocity
 	if layer == PLAYER:
 		var dir_to_mouse:= (get_global_mouse_position() - global_position).normalized()
+		var angle_to_up:= dir_to_mouse.angle_to(Vector2.UP)
+		if angle_to_up < -3*PI/8:
+			dir_to_mouse = Vector2.from_angle(-PI/8)
+		elif angle_to_up > 3*PI/8:
+			dir_to_mouse = Vector2.from_angle(-7*PI/8)
 		linear_velocity = dir_to_mouse * current_velocity

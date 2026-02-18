@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbkg61lb0m4tq"]
+[gd_scene format=3 uid="uid://bbkg61lb0m4tq"]
 
 [ext_resource type="Texture2D" uid="uid://divl3xh8mo1po" path="res://art/white_2x2.png" id="1_db58c"]
 [ext_resource type="Script" uid="uid://cnc1fjvcf3jie" path="res://scenes/player.gd" id="1_k0di6"]
@@ -9,25 +9,26 @@ size = Vector2(164, 39)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(162, 9)
 
-[node name="Player" type="StaticBody2D"]
+[node name="Player" type="StaticBody2D" unique_id=1816055356 node_paths=PackedStringArray("sprite")]
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_k0di6")
+sprite = NodePath("Sprite2D")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1146229050]
 modulate = Color(0.228683, 0.332999, 1, 1)
 scale = Vector2(80, 20)
 texture = ExtResource("1_db58c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=360199118]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_5mmlc")
 
-[node name="ControlBody" type="StaticBody2D" parent="."]
+[node name="ControlBody" type="StaticBody2D" parent="." unique_id=872174286]
 collision_layer = 32
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ControlBody"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ControlBody" unique_id=868904892]
 position = Vector2(0, -15.5)
 shape = SubResource("RectangleShape2D_g2els")

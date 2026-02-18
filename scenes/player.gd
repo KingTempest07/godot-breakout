@@ -6,6 +6,9 @@ class_name Paddle
 
 signal hit
 
+@export
+var sprite: Sprite2D
+
 @export var speed = 800
 var screen_size
 
@@ -26,7 +29,5 @@ func _process(delta):
 		velocity = velocity.normalized() * speed
 
 	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
-
-
-
+	var half_width:= Vector2(sprite.scale.x, 0)
+	position = position.clamp(Vector2.ZERO + half_width, screen_size - half_width)

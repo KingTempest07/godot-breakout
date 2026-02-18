@@ -15,13 +15,13 @@ script = ExtResource("1_mmuc5")
 row_colors_from_top = Array[Color]([Color(1, 0, 0, 1), Color(1, 0.633333, 0, 1), Color(1, 0.983333, 0, 1), Color(0, 1, 0.0833333, 1), Color(0, 1, 0.683333, 1)])
 
 [node name="Player" parent="." unique_id=115078739 instance=ExtResource("1_oxewp")]
-position = Vector2(600, 600)
+position = Vector2(576, 600)
 
 [node name="PaddleStartPosition" type="Marker2D" parent="." unique_id=1658594024]
-position = Vector2(600, 600)
+position = Vector2(576, 600)
 
 [node name="BallStartPosition" type="Marker2D" parent="." unique_id=165218259]
-position = Vector2(300, 400)
+position = Vector2(576, 400)
 
 [node name="Blocks" type="Node2D" parent="." unique_id=310471607]
 

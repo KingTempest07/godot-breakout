@@ -18,9 +18,10 @@ var current_velocity: float
 
 func _ready() -> void:
 	current_velocity = initial_velocity
-	var rand_angle:= randf_range(3*PI/4, PI/4)
-	var direction:= Vector2.from_angle(rand_angle)
-	linear_velocity = direction * current_velocity
+	#var rand_angle:= randf_range(3*PI/4, PI/4)
+	#var direction:= Vector2.from_angle(rand_angle)
+	#linear_velocity = direction * current_velocity
+	linear_velocity = Vector2.DOWN * current_velocity
 	
 	
 func _process(delta: float) -> void:

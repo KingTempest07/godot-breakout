@@ -50,6 +50,7 @@ quit={
 2d_physics/layer_3="ball"
 2d_physics/layer_4="blocks"
 2d_physics/layer_5="walls"
+2d_physics/layer_6="control ball"
 
 [physics]
 

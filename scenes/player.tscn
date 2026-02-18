@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbkg61lb0m4tq"]
+[gd_scene load_steps=5 format=3 uid="uid://bbkg61lb0m4tq"]
 
 [ext_resource type="Texture2D" uid="uid://divl3xh8mo1po" path="res://art/white_2x2.png" id="1_db58c"]
 [ext_resource type="Script" uid="uid://cnc1fjvcf3jie" path="res://scenes/player.gd" id="1_k0di6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mmlc"]
-size = Vector2(164, 40)
+size = Vector2(164, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(162, 9)
 
 [node name="Player" type="StaticBody2D"]
 collision_layer = 2
@@ -18,4 +21,13 @@ scale = Vector2(80, 20)
 texture = ExtResource("1_db58c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_5mmlc")
+
+[node name="ControlBody" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ControlBody"]
+position = Vector2(0, -15.5)
+shape = SubResource("RectangleShape2D_g2els")

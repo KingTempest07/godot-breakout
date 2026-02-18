@@ -7,12 +7,11 @@
 friction = 0.0
 bounce = 1.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_t866w"]
-radius = 16.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxlvu"]
 
 [node name="Ball" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 26
+collision_mask = 58
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_f2r8b")
 gravity_scale = 0.0
@@ -25,7 +24,7 @@ velocity_increase_on_bounce = 4.0
 max_velocity = 400.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_t866w")
+shape = SubResource("RectangleShape2D_cxlvu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(10, 10)

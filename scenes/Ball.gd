@@ -3,7 +3,7 @@ class_name  Ball
 
 const BALL = 4
 const BLOCK = 8
-const PLAYER = 2
+const CONTROL_BALL = 32
 
 # We will set the ball in motion and let the 2D physics system do the rest.
 # See the README for settings to make this work correctly.
@@ -38,7 +38,7 @@ func _on_body_exited(body: Node) -> void:
 		body.queue_free()
 		current_velocity += velocity_increase_on_bounce
 		linear_velocity = linear_velocity.normalized() * current_velocity
-	if layer == PLAYER:
+	if layer == CONTROL_BALL:
 		var dir_to_mouse:= (get_global_mouse_position() - global_position).normalized()
 		var angle_to_up:= dir_to_mouse.angle_to(Vector2.UP)
 		if angle_to_up < -3*PI/8:

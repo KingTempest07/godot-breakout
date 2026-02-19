@@ -15,6 +15,12 @@ const CONTROL_BALL = 32
 @export var max_velocity:= 1000.0
 var current_velocity: float
 
+
+@export
+var hue_change_per_bounce: float
+@export
+var sprite: Sprite2D
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -41,6 +47,7 @@ func _on_body_exited(body: Node2D) -> void:
 		call_deferred("destroy_block", body)
 		current_velocity += velocity_increase_on_bounce
 		linear_velocity = linear_velocity.normalized() * current_velocity
+		on_bounce()
 	if layer == CONTROL_BALL:
 		var dir_to_mouse:= (get_global_mouse_position() - global_position).normalized()
 		var angle_to_up:= dir_to_mouse.angle_to(Vector2.UP)
@@ -49,6 +56,17 @@ func _on_body_exited(body: Node2D) -> void:
 		elif angle_to_up > 3*PI/8:
 			dir_to_mouse = Vector2.from_angle(-7*PI/8)
 		linear_velocity = dir_to_mouse * current_velocity
+		on_bounce()
+		
+		
+func on_bounce():
+	var h:= sprite.modulate.h + hue_change_per_bounce
+	if h > 1:
+		h -= 1
+	elif h < 0:
+		h += 1
+	var color_tween:= create_tween()
+	color_tween.tween_property(sprite, "modulate", Color.from_hsv(h, sprite.modulate.s, sprite.modulate.v, sprite.modulate.a), .25)
 		
 		
 func destroy_block(block: Node2D):

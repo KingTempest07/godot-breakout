@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bemti83vn4oqu"]
+[gd_scene format=3 uid="uid://bemti83vn4oqu"]
 
 [ext_resource type="Script" uid="uid://c6g0o7drg8wed" path="res://scenes/Ball.gd" id="1_50qgs"]
 [ext_resource type="Texture2D" uid="uid://divl3xh8mo1po" path="res://art/white_2x2.png" id="2_gnrf1"]
@@ -9,7 +9,7 @@ bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxlvu"]
 
-[node name="Ball" type="RigidBody2D"]
+[node name="Ball" type="RigidBody2D" unique_id=421190300 node_paths=PackedStringArray("sprite")]
 collision_layer = 4
 collision_mask = 58
 mass = 0.1
@@ -22,11 +22,14 @@ script = ExtResource("1_50qgs")
 initial_velocity = 200.0
 velocity_increase_on_bounce = 4.0
 max_velocity = 400.0
+hue_change_per_bounce = 0.1
+sprite = NodePath("Sprite2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=130083359]
 shape = SubResource("RectangleShape2D_cxlvu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1676519670]
+modulate = Color(1, 0.39999998, 0.39999998, 1)
 scale = Vector2(10, 10)
 texture = ExtResource("2_gnrf1")
 

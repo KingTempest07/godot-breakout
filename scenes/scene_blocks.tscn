@@ -13,9 +13,7 @@ size = Vector2(273.2, 2.4)
 
 [node name="Scene_Blocks" type="Node2D" unique_id=858520629 node_paths=PackedStringArray("death_zone")]
 script = ExtResource("1_mmuc5")
-column_count = 1
-row_count = 1
-row_colors_from_top = Array[Color]([Color(1, 0, 0, 1), Color(1, 0.633333, 0, 1), Color(1, 0.983333, 0, 1), Color(0, 1, 0.0833333, 1), Color(0, 1, 0.683333, 1)])
+row_colors_from_top = Array[Color]([Color(0.9019608, 0, 0, 1), Color(0.9, 0.57, 0, 1), Color(0.9, 0.885, 0, 1), Color(0, 0.9, 0.07499993, 1), Color(0, 0.9, 0.61500007, 1)])
 restart_scene = ExtResource("2_mr62e")
 death_zone = NodePath("Walls/DeathZone")
 

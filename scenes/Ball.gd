@@ -1,6 +1,8 @@
 extends RigidBody2D
 class_name  Ball
 
+signal block_destroyed(block: Node2D)
+
 const BALL = 4
 const BLOCK = 8
 const CONTROL_BALL = 32
@@ -33,10 +35,10 @@ func _process(delta: float) -> void:
 
 
 
-func _on_body_exited(body: Node) -> void:
+func _on_body_exited(body: Node2D) -> void:
 	var layer = body.collision_layer
 	if layer == BLOCK:
-		body.queue_free()
+		call_deferred("destroy_block", body)
 		current_velocity += velocity_increase_on_bounce
 		linear_velocity = linear_velocity.normalized() * current_velocity
 	if layer == CONTROL_BALL:
@@ -47,3 +49,8 @@ func _on_body_exited(body: Node) -> void:
 		elif angle_to_up > 3*PI/8:
 			dir_to_mouse = Vector2.from_angle(-7*PI/8)
 		linear_velocity = dir_to_mouse * current_velocity
+		
+		
+func destroy_block(block: Node2D):
+	block_destroyed.emit(block)
+	block.queue_free()

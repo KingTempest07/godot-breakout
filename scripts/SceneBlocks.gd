@@ -13,7 +13,18 @@ extends Node2D
 @export var row_colors_from_top: Array[Color]
 
 
-var ball
+@export
+var restart_scene: PackedScene
+
+
+@export
+var death_zone: StaticBody2D
+
+
+var remaining_blocks: Array[Node2D]
+
+
+var ball: Ball
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,6 +51,7 @@ func _ready() -> void:
 			new_block.global_position = Vector2(current_x, current_y)
 			new_block.modulate = row_colors_from_top[j]
 			parent_node.add_child(new_block)	
+			remaining_blocks.append(new_block)
 			current_y += block_height + margin	
 			
 		current_x += block_width + margin
@@ -49,6 +61,26 @@ func _ready() -> void:
 	ball = ball_scene.instantiate()
 	ball.global_position = ball_start_position.global_position
 	add_child(ball)
+	ball.block_destroyed.connect(
+		func(block): 
+			remaining_blocks.erase(block)
+			if len(remaining_blocks) == 0:
+				call_deferred("_restart", "You won!")
+	)
+	
+	ball.body_entered.connect(
+		func(body):
+			if body == death_zone:
+				call_deferred("_restart", "You lost!\n\n(ball was destroyed)\n\n")
+	)
+	
+	
+func _restart(text: String):
+	var restart:= restart_scene.instantiate() as RestartHandler
+	restart.label_text = text
+	get_tree().change_scene_to_node(restart)
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):

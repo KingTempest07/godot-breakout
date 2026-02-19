@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bwrulw4tco2j" path="res://scripts/SceneBlocks.gd" id="1_mmuc5"]
 [ext_resource type="PackedScene" uid="uid://bbkg61lb0m4tq" path="res://scenes/player.tscn" id="1_oxewp"]
+[ext_resource type="PackedScene" uid="uid://bgnhhvlrkr0gg" path="res://scenes/restart.tscn" id="2_mr62e"]
 [ext_resource type="PhysicsMaterial" uid="uid://u6ie1omt700b" path="res://physics/bouncy_physics_material.tres" id="3_36qkm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgi6q"]
@@ -10,9 +11,13 @@ size = Vector2(21.6, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmk5a"]
 size = Vector2(273.2, 2.4)
 
-[node name="Scene_Blocks" type="Node2D" unique_id=858520629]
+[node name="Scene_Blocks" type="Node2D" unique_id=858520629 node_paths=PackedStringArray("death_zone")]
 script = ExtResource("1_mmuc5")
+column_count = 1
+row_count = 1
 row_colors_from_top = Array[Color]([Color(1, 0, 0, 1), Color(1, 0.633333, 0, 1), Color(1, 0.983333, 0, 1), Color(0, 1, 0.0833333, 1), Color(0, 1, 0.683333, 1)])
+restart_scene = ExtResource("2_mr62e")
+death_zone = NodePath("Walls/DeathZone")
 
 [node name="Player" parent="." unique_id=115078739 instance=ExtResource("1_oxewp")]
 position = Vector2(576, 600)
@@ -45,6 +50,17 @@ collision_mask = 4
 physics_material_override = ExtResource("3_36qkm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Ceiling" unique_id=1316427644]
+position = Vector2(125.8, -8.8)
+shape = SubResource("RectangleShape2D_vmk5a")
+
+[node name="DeathZone" type="StaticBody2D" parent="Walls" unique_id=555808824]
+position = Vector2(-52, 1082)
+scale = Vector2(5, 40)
+collision_layer = 16
+collision_mask = 4
+physics_material_override = ExtResource("3_36qkm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/DeathZone" unique_id=62775017]
 position = Vector2(125.8, -8.8)
 shape = SubResource("RectangleShape2D_vmk5a")
 

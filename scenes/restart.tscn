@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bgnhhvlrkr0gg"]
+
+[ext_resource type="Script" uid="uid://jfnu5m1duabn" path="res://scenes/restart_handler.gd" id="1_q5shd"]
+
+[node name="RestartHandler" type="CanvasLayer" unique_id=23395413]
+script = ExtResource("1_q5shd")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=474777572]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1392654116]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer" unique_id=1192173623]
+layout_mode = 2
+text = "*text here*"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="RestartLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer" unique_id=950127886]
+layout_mode = 2
+text = "Press 'R' to restart"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1

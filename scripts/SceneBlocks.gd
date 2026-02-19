@@ -21,6 +21,11 @@ var restart_scene: PackedScene
 var death_zone: StaticBody2D
 
 
+@export
+var combo_label: RichTextLabel
+var combo:= 0
+
+
 var remaining_blocks: Array[Node2D]
 
 
@@ -64,15 +69,24 @@ func _ready() -> void:
 	ball.block_destroyed.connect(
 		func(block): 
 			remaining_blocks.erase(block)
+			combo_label.show()
+			combo += 1
+			combo_label.text = str(combo) + " COMBO"
 			if len(remaining_blocks) == 0:
 				call_deferred("_restart", "You won!")
 	)
-	
 	ball.body_entered.connect(
 		func(body):
 			if body == death_zone:
 				call_deferred("_restart", "You lost!\n\n(ball was destroyed)\n\n")
 	)
+	ball.player_entered.connect(
+		func():
+			combo_label.hide()
+			combo = 0
+	)
+	
+	combo_label.hide()
 	
 	
 func _restart(text: String):

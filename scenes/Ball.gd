@@ -2,6 +2,7 @@ extends RigidBody2D
 class_name  Ball
 
 signal block_destroyed(block: Node2D)
+signal player_entered()
 
 const BALL = 4
 const BLOCK = 8
@@ -57,6 +58,7 @@ func _on_body_exited(body: Node2D) -> void:
 			dir_to_mouse = Vector2.from_angle(-7*PI/8)
 		linear_velocity = dir_to_mouse * current_velocity
 		on_bounce()
+		player_entered.emit()
 		
 		
 func on_bounce():
@@ -66,7 +68,12 @@ func on_bounce():
 	elif h < 0:
 		h += 1
 	var color_tween:= create_tween()
-	color_tween.tween_property(sprite, "modulate", Color.from_hsv(h, sprite.modulate.s, sprite.modulate.v, sprite.modulate.a), .25)
+	color_tween.tween_property(
+		sprite, "modulate", 
+		Color.from_hsv(
+			h, sprite.modulate.s, sprite.modulate.v, sprite.modulate.a
+		), .25
+	)
 		
 		
 func destroy_block(block: Node2D):
